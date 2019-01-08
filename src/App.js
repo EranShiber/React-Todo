@@ -12,14 +12,11 @@ class App extends Component {
       todos: [],
       userType: ""
     }
-    this.inputEvent = this.inputEvent.bind(this)
-    this.submitEvent = this.submitEvent.bind(this)
   }
 
   checkMark = (id) => {
     this.setState(oldState => {
       const newTodo = oldState.todos.map(x => {
-        console.log(x)
         if (x.id === id) {
           x.completed = !x.completed
         }
@@ -31,6 +28,24 @@ class App extends Component {
     })
   }
 
+
+
+  deleteTodo = (e) => {
+    this.setState(oldState => {
+      let newState = oldState.todos.filter(x => {
+        if (x.id !== e.id) {
+          return x
+        }
+        return newState
+      })
+      return {
+        todos: newState
+      }
+
+    })
+
+
+  }
 
   inputEvent = (e) => {
     this.setState({ userType: e.target.value })
@@ -61,7 +76,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Input inputEvent={this.inputEvent} submitEvent={this.submitEvent} value={this.state.userType} />
-        <Todos todos={this.state.todos} checkMark={this.checkMark} />
+        <Todos todos={this.state.todos} checkMark={this.checkMark} deleteTodo={this.deleteTodo} />
       </div>
     );
   }

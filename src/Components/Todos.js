@@ -5,16 +5,16 @@ import TodoItem from './TodoItem';
 
 class Todos extends React.Component {
     constructor() {
-        super()        
+        super()
     }
     render() {
         let newTodo = this.props.todos.map(item => {
-            return <TodoItem id={item.id} checkMark={this.props.checkMark} key={item.id} title={item.title} completed={item.completed} />
+            return <TodoItem id={item.id} deleteTodo={this.props.deleteTodo.bind(this, item)} checkMark={this.props.checkMark} key={item.id} title={item.title} completed={item.completed} />
         })
-        return(
-            <div style={{textAlign: 'center', padding: '10px'}}>
-            
-           {newTodo} 
+        return (
+            <div style={{ textAlign: 'center', padding: '10px' }}>
+                {newTodo}
+
             </div>
         )
     }
