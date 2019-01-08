@@ -13,6 +13,7 @@ class TodoItem extends React.Component {
                 <input type="checkbox" checked={this.props.completed}/>
                 <span style={titleStyle}>{this.props.title}</span>
                 <hr />
+                <p>Change</p>
             </div>
         )
     }
