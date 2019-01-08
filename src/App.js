@@ -39,6 +39,9 @@ class App extends Component {
 
   submitEvent = (e) => {
     e.preventDefault()
+    if (!this.state.userType) {
+      return
+    }
     let oldState = this.state.todos;
     oldState.push({
       title: this.state.userType,
