@@ -10,7 +10,7 @@ class TodoItem extends React.Component {
         }
         return (
             <div style={{ padding: 10, width: 300, margin: 'auto' }}>
-                <input type="checkbox"
+                <input onChange={() => this.props.checkMark(this.props.id)} type="checkbox"
                  checked={this.props.completed} />
                 <span style={titleStyle}>{this.props.title}</span>
                 <hr />

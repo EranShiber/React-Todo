@@ -9,45 +9,47 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      todos: [
-        {
-          title: 'do home work',
-          completed: false,
-          id: 1
-        },
-        {
-          title: 'gym',
-          completed: false,
-          id: 2
-        },
-        {
-          title: 'learn react',
-          completed: true,
-          id: 3
-        },
-      ],
+      todos: [],
       userType: ""
     }
+    this.inputEvent = this.inputEvent.bind(this)
+    this.submitEvent = this.submitEvent.bind(this)
+  }
+
+  checkMark = (id) => {
+    this.setState(oldState => {
+      const newTodo = oldState.todos.map(x => {
+        console.log(x)
+        if (x.id === id) {
+          x.completed = !x.completed
+        }
+        return x
+      })
+      return {
+        todos: newTodo
+      }
+    })
   }
 
 
   inputEvent = (e) => {
     this.setState({ userType: e.target.value })
-
+    this.submitEvent = this.submitEvent.bind(this)
   }
-
 
   submitEvent = (e) => {
     e.preventDefault()
-    const oldState = this.state.todos;
+    let oldState = this.state.todos;
     oldState.push({
       title: this.state.userType,
       id: Math.random(),
       completed: false
     })
     this.setState({
-      todos: oldState
+      todos: oldState,
+      userType: ''
     })
+
   }
 
 
@@ -55,8 +57,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Input inputEvent={this.inputEvent} submitEvent={this.submitEvent} />
-        <Todos todos={this.state.todos} />
+        <Input inputEvent={this.inputEvent} submitEvent={this.submitEvent} value={this.state.userType} />
+        <Todos todos={this.state.todos} checkMark={this.checkMark} />
       </div>
     );
   }

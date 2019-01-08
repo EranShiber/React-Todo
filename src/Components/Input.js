@@ -17,7 +17,7 @@ class Input extends React.Component {
                  onSubmit={(e) => this.props.submitEvent(e)}>
                     <input style={inputStyle}
                         type="text"
-                        name="name"
+                        value={this.props.value}
                         onChange={(e) => this.props.inputEvent(e)}
                         placeholder="Enter todo..." />
                         
