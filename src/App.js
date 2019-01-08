@@ -29,14 +29,24 @@ class App extends Component {
     }
   }
 
+  inputEvent = (e) => {
+    console.log(e)
+    console.log(e.target.value)
+  }
+  submitEvent = (e) => {
+    e.preventDefault()
+    console.log()
+    console.log(this.state)
+  }
   
 
   render() {
     return (
       <div className="App">
       <Header  />
-      <Input />
-      <Todos  todos={this.state.todos}/>
+      <Input inputEvent={this.inputEvent} submitEvent={this.submitEvent} />
+      <Todos  todos={this.state.todos}
+/>
       </div>
     );
   }
