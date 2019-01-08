@@ -11,14 +11,13 @@ let inputStyle = {
 
 class Input extends React.Component {
     render() {
-        console.log(this.props)
         return (
             <div style={{ textAlign: 'center' }}>
                 <form
                  onSubmit={(e) => this.props.submitEvent(e)}>
                     <input style={inputStyle}
                         type="text"
-                        name=""
+                        name="name"
                         onChange={(e) => this.props.inputEvent(e)}
                         placeholder="Enter todo..." />
                         

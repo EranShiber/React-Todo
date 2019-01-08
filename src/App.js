@@ -25,28 +25,38 @@ class App extends Component {
           completed: true,
           id: 3
         },
-      ]
+      ],
+      userType: ""
     }
   }
 
+
   inputEvent = (e) => {
-    console.log(e)
-    console.log(e.target.value)
+    this.setState({ userType: e.target.value })
+
   }
+
+
   submitEvent = (e) => {
     e.preventDefault()
-    console.log()
-    console.log(this.state)
+    const oldState = this.state.todos;
+    oldState.push({
+      title: this.state.userType,
+      id: Math.random(),
+      completed: false
+    })
+    this.setState({
+      todos: oldState
+    })
   }
-  
+
 
   render() {
     return (
       <div className="App">
-      <Header  />
-      <Input inputEvent={this.inputEvent} submitEvent={this.submitEvent} />
-      <Todos  todos={this.state.todos}
-/>
+        <Header />
+        <Input inputEvent={this.inputEvent} submitEvent={this.submitEvent} />
+        <Todos todos={this.state.todos} />
       </div>
     );
   }
