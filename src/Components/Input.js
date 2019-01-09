@@ -5,7 +5,7 @@ let inputStyle = {
     width: '80vh',
     margin: 'auto',
     border: 'none',
-    borderBottom: '1px solid lightblue',
+    borderBottom: '1px solid #ccc',
     outline: 'none'
 }
 
@@ -19,7 +19,7 @@ class Input extends React.Component {
                         type="text"
                         value={this.props.value}
                         onChange={(e) => this.props.inputEvent(e)}
-                        placeholder="Enter todo..." />
+                        placeholder={`Set your goals ${new Date().toJSON().slice(0,10).replace(/-/g,'/')}`} />
                         
                     <input type="submit"
                         value="Add" />

@@ -9,9 +9,12 @@ class TodoItem extends React.Component {
             textDecoration: this.props.completed ? 'line-through' : 'none'
         }
         return (
-            <div style={{ padding: 10, width: 300, margin: 'auto' }}>
-                <input onChange={() => this.props.checkMark(this.props.id)} type="checkbox"
-                 checked={this.props.completed} />
+            <div className="todoItem" >
+                 <h4><i>{this.props.time}</i></h4>
+                <input onChange=
+                {() => this.props.handleCompleteState(this.props.id)} 
+                type="checkbox"
+                 handleCompleteState={this.props.completed} />
                 <span style={titleStyle}>{this.props.title}</span>
                 <button onClick={this.props.deleteTodo}>Delete</button>
                 <hr />

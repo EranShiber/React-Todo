@@ -14,7 +14,7 @@ class App extends Component {
     }
   }
 
-  checkMark = (id) => {
+  handleCompleteState = (id) => {
     this.setState(oldState => {
       const newTodo = oldState.todos.map(x => {
         if (x.id === id) {
@@ -29,7 +29,7 @@ class App extends Component {
   }
 
 
-
+  
   deleteTodo = (e) => {
     this.setState(oldState => {
       let newState = oldState.todos.filter(x => {
@@ -41,10 +41,7 @@ class App extends Component {
       return {
         todos: newState
       }
-
     })
-
-
   }
 
   inputEvent = (e) => {
@@ -60,8 +57,9 @@ class App extends Component {
     let oldState = this.state.todos;
     oldState.push({
       title: this.state.userType,
-      id: Math.random(),
-      completed: false
+      id: Math.random() ,
+      completed: false,
+      time: `Task from:  ${new Date().getHours()}:0${new Date().getMinutes()}`
     })
     this.setState({
       todos: oldState,
@@ -70,13 +68,12 @@ class App extends Component {
 
   }
 
-
   render() {
     return (
       <div className="App">
         <Header />
         <Input inputEvent={this.inputEvent} submitEvent={this.submitEvent} value={this.state.userType} />
-        <Todos todos={this.state.todos} checkMark={this.checkMark} deleteTodo={this.deleteTodo} />
+        <Todos todos={this.state.todos} handleCompleteState={this.handleCompleteState} deleteTodo={this.deleteTodo} />
       </div>
     );
   }
